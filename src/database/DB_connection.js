@@ -9,7 +9,14 @@ const FavoriteModel = require("./models/Favorites");
 //   { logging: false }
 // );
 
-const database = new Sequelize(DB_URL, { logging: false });
+const database = new Sequelize(DB_URL, {
+  logging: false,
+  dialectOptions: {
+    ssl: {
+      require: true,
+    },
+  },
+});
 
 UserModel(database);
 FavoriteModel(database);
